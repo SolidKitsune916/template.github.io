@@ -48,6 +48,8 @@
         contact: {
             email: "hello@yourbusiness.com",
             phone: "(555) 123-4567",
+            tollFree: "1-800-123-4567", // 1800 number
+            fax: "(555) 123-4568", // Fax number
             whatsapp: "+15551234567",
             address: "123 Main St, City, State 12345",
             hours: {
@@ -56,6 +58,30 @@
                 sunday: "Closed"
             },
             googleMapsUrl: "https://maps.google.com/?q=Your+Business+Address"
+        },
+        
+        // Business Credentials & Licenses
+        credentials: {
+            businessLicense: {
+                enabled: true,
+                number: "BL123456789",
+                link: "https://yourdomain.com/business-license.pdf",
+                text: "View Business License"
+            },
+            professionalLicense: {
+                enabled: true,
+                number: "PL987654321",
+                type: "Professional License", // e.g., "Contractor License", "Medical License", etc.
+                issuingAuthority: "State Board"
+            },
+            insurance: {
+                enabled: true,
+                provider: "ABC Insurance Company",
+                policyNumber: "POL123456789",
+                link: "https://yourdomain.com/proof-of-insurance.pdf",
+                text: "View Proof of Insurance",
+                coverage: "$1,000,000 General Liability"
+            }
         },
         
         // Theme & Appearance
@@ -126,6 +152,7 @@
             contact: true,
             newsletter: true,
             socialProof: true,
+            credentials: false, // New section for business credentials
             chatWidget: false,
             cookieConsent: true,
             backToTop: true
@@ -2737,6 +2764,7 @@
                 if (this.config.features.testimonials) items.push({ href: '#testimonials', text: 'Testimonials' });
                 if (this.config.features.pricing) items.push({ href: '#pricing', text: 'Pricing' });
                 if (this.config.features.blog) items.push({ href: '#blog', text: 'Blog' });
+                if (this.config.features.credentials) items.push({ href: '#credentials', text: 'Credentials' });
                 if (this.config.features.contact) items.push({ href: '#contact', text: 'Contact' });
                 return items;
             }
@@ -2799,6 +2827,10 @@
                 
                 if (this.config.features.contact) {
                     main.appendChild(this.buildContactSection());
+                }
+                
+                if (this.config.features.credentials) {
+                    main.appendChild(this.buildCredentialsSection());
                 }
             }
             
@@ -3357,6 +3389,62 @@
                 return section;
             }
             
+            // Credentials Section
+            buildCredentialsSection() {
+                const section = document.createElement('section');
+                section.id = 'credentials';
+                section.className = 'section';
+                
+                const content = `
+                    <div class="container">
+                        <div class="section-header animate-fadeInUp">
+                            <div class="section-label">Business Credentials</div>
+                            <h2 class="section-title">Licenses & Certifications</h2>
+                            <p class="section-subtitle">Professional credentials and compliance information</p>
+                        </div>
+                        <div class="grid grid-cols-3">
+                            ${this.config.credentials.businessLicense.enabled ? `
+                                <div class="card animate-fadeInUp">
+                                    <div class="icon icon-check icon-xl" style="color: var(--success); margin-bottom: var(--space-lg);"></div>
+                                    <h3>Business License</h3>
+                                    <p style="color: var(--text-secondary); margin-bottom: var(--space-md);">${this.config.credentials.businessLicense.number}</p>
+                                    ${this.config.credentials.businessLicense.link ? `
+                                        <a href="${this.config.credentials.businessLicense.link}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                                            ${this.config.credentials.businessLicense.text}
+                                        </a>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            ${this.config.credentials.professionalLicense.enabled ? `
+                                <div class="card animate-fadeInUp">
+                                    <div class="icon icon-check icon-xl" style="color: var(--success); margin-bottom: var(--space-lg);"></div>
+                                    <h3>${this.config.credentials.professionalLicense.type}</h3>
+                                    <p style="color: var(--text-secondary); margin-bottom: var(--space-sm);">${this.config.credentials.professionalLicense.number}</p>
+                                    <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">Issued by: ${this.config.credentials.professionalLicense.issuingAuthority}</p>
+                                </div>
+                            ` : ''}
+                            ${this.config.credentials.insurance.enabled ? `
+                                <div class="card animate-fadeInUp">
+                                    <div class="icon icon-check icon-xl" style="color: var(--success); margin-bottom: var(--space-lg);"></div>
+                                    <h3>Insurance</h3>
+                                    <p style="color: var(--text-secondary); margin-bottom: var(--space-sm);">${this.config.credentials.insurance.provider}</p>
+                                    <p style="color: var(--text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--space-sm);">Policy: ${this.config.credentials.insurance.policyNumber}</p>
+                                    <p style="color: var(--text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--space-md);">Coverage: ${this.config.credentials.insurance.coverage}</p>
+                                    ${this.config.credentials.insurance.link ? `
+                                        <a href="${this.config.credentials.insurance.link}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+                                            ${this.config.credentials.insurance.text}
+                                        </a>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                section.innerHTML = content;
+                return section;
+            }
+            
             // Contact Section
             buildContactSection() {
                 const section = document.createElement('section');
@@ -3392,9 +3480,21 @@
                                         <div>
                                             <strong>Phone</strong><br>
                                             <a href="tel:${this.config.contact.phone.replace(/[^0-9+]/g, '')}">${this.config.contact.phone}</a>
+                                            ${this.config.contact.tollFree ? `<br><a href="tel:${this.config.contact.tollFree.replace(/[^0-9+]/g, '')}">${this.config.contact.tollFree}</a>` : ''}
                                             ${this.config.contact.whatsapp ? `<br><a href="https://wa.me/${this.config.contact.whatsapp}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
                                         </div>
                                     </div>
+                                    ${this.config.contact.fax ? `
+                                    <div class="contact-item">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                        </svg>
+                                        <div>
+                                            <strong>Fax</strong><br>
+                                            <a href="tel:${this.config.contact.fax.replace(/[^0-9+]/g, '')}">${this.config.contact.fax}</a>
+                                        </div>
+                                    </div>
+                                    ` : ''}
                                     <div class="contact-item">
                                         <svg viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -3417,6 +3517,50 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                ${(this.config.credentials.businessLicense.enabled || this.config.credentials.professionalLicense.enabled || this.config.credentials.insurance.enabled) ? `
+                                <div class="credentials-section" style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--border);">
+                                    <h4 style="margin-bottom: var(--space-lg); color: var(--text-primary);">Business Credentials</h4>
+                                    ${this.config.credentials.businessLicense.enabled ? `
+                                    <div class="contact-item">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <div>
+                                            <strong>Business License</strong><br>
+                                            <span style="color: var(--text-secondary);">${this.config.credentials.businessLicense.number}</span>
+                                            ${this.config.credentials.businessLicense.link ? `<br><a href="${this.config.credentials.businessLicense.link}" target="_blank" rel="noopener">${this.config.credentials.businessLicense.text}</a>` : ''}
+                                        </div>
+                                    </div>
+                                    ` : ''}
+                                    ${this.config.credentials.professionalLicense.enabled ? `
+                                    <div class="contact-item">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <div>
+                                            <strong>${this.config.credentials.professionalLicense.type}</strong><br>
+                                            <span style="color: var(--text-secondary);">${this.config.credentials.professionalLicense.number}</span><br>
+                                            <span style="color: var(--text-secondary); font-size: var(--font-size-sm);">Issued by: ${this.config.credentials.professionalLicense.issuingAuthority}</span>
+                                        </div>
+                                    </div>
+                                    ` : ''}
+                                    ${this.config.credentials.insurance.enabled ? `
+                                    <div class="contact-item">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <div>
+                                            <strong>Insurance</strong><br>
+                                            <span style="color: var(--text-secondary);">${this.config.credentials.insurance.provider}</span><br>
+                                            <span style="color: var(--text-secondary); font-size: var(--font-size-sm);">Policy: ${this.config.credentials.insurance.policyNumber}</span><br>
+                                            <span style="color: var(--text-secondary); font-size: var(--font-size-sm);">Coverage: ${this.config.credentials.insurance.coverage}</span>
+                                            ${this.config.credentials.insurance.link ? `<br><a href="${this.config.credentials.insurance.link}" target="_blank" rel="noopener">${this.config.credentials.insurance.text}</a>` : ''}
+                                        </div>
+                                    </div>
+                                    ` : ''}
+                                </div>
+                                ` : ''}
                                 
                                 ${this.config.features.socialMedia ? `
                                     <div class="social-links">
@@ -3525,6 +3669,8 @@
                         <ul class="footer-links">
                             <li>${this.config.contact.email}</li>
                             <li>${this.config.contact.phone}</li>
+                            ${this.config.contact.tollFree ? `<li>${this.config.contact.tollFree}</li>` : ''}
+                            ${this.config.contact.fax ? `<li>Fax: ${this.config.contact.fax}</li>` : ''}
                             <li>${this.config.contact.address}</li>
                         </ul>
                     `;
