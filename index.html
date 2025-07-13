@@ -3,8 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="[BUSINESS_DESCRIPTION]">
-    <title>[BUSINESS_NAME] - [BUSINESS_TAGLINE]</title>
+    <meta name="description" content="">
+    <title></title>
+    
+    <script>
+    // ====================================
+    // SITE CONFIGURATION - EDIT THIS SECTION
+    // ====================================
+    const SITE_CONFIG = {
+        // Basic Information
+        businessName: "Your Business Name",
+        tagline: "Your Tagline Here",
+        description: "Brief description of your business for SEO",
+        
+        // Contact Information
+        email: "hello@yourbusiness.com",
+        phone: "(555) 123-4567",
+        address: "123 Main St, City, State 12345",
+        hours: "Monday - Friday: 9AM - 5PM",
+        
+        // Color Scheme (choose one: 'corporate', 'creative', 'health', 'tech', 'elegant', 'custom')
+        colorScheme: 'corporate',
+        
+        // Custom Colors (only if colorScheme is 'custom')
+        customColors: {
+            primary: '#0F172A',
+            secondary: '#3B82F6',
+            accent: '#F59E0B',
+            success: '#10B981',
+            textPrimary: '#1E293B',
+            textSecondary: '#64748B',
+            bgLight: '#F8FAFC',
+            white: '#FFFFFF'
+        },
+        
+        // Features to Enable/Disable
+        features: {
+            hero: true,
+            services: true,
+            about: true,
+            testimonials: true,
+            team: false,
+            portfolio: false,
+            pricing: false,
+            faq: true,
+            blog: false,
+            contact: true,
+            newsletter: true,
+            socialMedia: true
+        },
+        
+        // Hero Section
+        hero: {
+            headline: "Welcome to Professional Excellence",
+            subheadline: "Transform Your Business Today",
+            description: "We provide innovative solutions that drive growth and deliver results.",
+            primaryCTA: "Get Started",
+            secondaryCTA: "Learn More",
+            backgroundType: 'gradient', // 'gradient', 'image', 'video'
+            backgroundImage: '', // URL if backgroundType is 'image'
+            stats: [
+                { number: "10+", label: "Years Experience" },
+                { number: "500+", label: "Happy Clients" },
+                { number: "95%", label: "Success Rate" }
+            ]
+        },
+        
+        // Services (up to 9)
+        services: [
+            {
+                name: "Service One",
+                description: "Brief description of your first service offering.",
+                icon: "check", // 'check', 'chart', 'users', 'settings', 'star', 'heart'
+                cta: "Learn More"
+            },
+            {
+                name: "Service Two",
+                description: "Brief description of your second service offering.",
+                icon: "chart",
+                cta: "Get Started"
+            },
+            {
+                name: "Service Three",
+                description: "Brief description of your third service offering.",
+                icon: "users",
+                cta: "Contact Us"
+            }
+        ],
+        
+        // About Section
+        about: {
+            headline: "About Our Company",
+            description: "We are dedicated to providing exceptional service and innovative solutions to help businesses thrive in today's competitive market.",
+            mission: "Our mission is to empower businesses through innovative solutions.",
+            vision: "To be the leading provider of transformative business solutions.",
+            image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+        },
+        
+        // Testimonials
+        testimonials: [
+            {
+                name: "John Smith",
+                role: "CEO, Tech Corp",
+                content: "Outstanding service! They transformed our business operations.",
+                rating: 5
+            },
+            {
+                name: "Sarah Johnson",
+                role: "Founder, StartupX",
+                content: "Professional, reliable, and results-driven. Highly recommend!",
+                rating: 5
+            },
+            {
+                name: "Michael Chen",
+                role: "Director, Innovation Labs",
+                content: "The best decision we made was partnering with them.",
+                rating: 5
+            }
+        ],
+        
+        // Team Members
+        team: [
+            {
+                name: "Jane Doe",
+                role: "Founder & CEO",
+                bio: "20+ years of industry experience",
+                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+                linkedin: "https://linkedin.com/in/janedoe"
+            }
+        ],
+        
+        // FAQ
+        faq: [
+            {
+                question: "How do I get started?",
+                answer: "Simply contact us through our form or give us a call to discuss your needs."
+            },
+            {
+                question: "What makes you different?",
+                answer: "Our personalized approach and commitment to excellence sets us apart."
+            },
+            {
+                question: "Do you offer custom solutions?",
+                answer: "Yes, all our solutions are tailored to meet your specific business needs."
+            }
+        ],
+        
+        // Social Media
+        socialMedia: {
+            facebook: "https://facebook.com/yourbusiness",
+            twitter: "https://twitter.com/yourbusiness",
+            linkedin: "https://linkedin.com/company/yourbusiness",
+            instagram: "https://instagram.com/yourbusiness",
+            youtube: ""
+        },
+        
+        // Form Settings
+        formSettings: {
+            type: 'contact', // 'contact', 'quote', 'booking'
+            webhook: '', // Your form webhook URL
+            emailTo: 'hello@yourbusiness.com',
+            successMessage: 'Thank you! We\'ll be in touch soon.'
+        },
+        
+        // Footer
+        footer: {
+            description: "Your trusted partner for business growth and success.",
+            copyrightYear: new Date().getFullYear(),
+            privacyPolicy: true,
+            termsOfService: true
+        }
+    };
+    
+    // Color Scheme Presets
+    const COLOR_SCHEMES = {
+        corporate: {
+            primary: '#0F172A',
+            secondary: '#3B82F6',
+            accent: '#F59E0B',
+            success: '#10B981',
+            textPrimary: '#1E293B',
+            textSecondary: '#64748B',
+            bgLight: '#F8FAFC',
+            white: '#FFFFFF'
+        },
+        creative: {
+            primary: '#7C3AED',
+            secondary: '#EC4899',
+            accent: '#F59E0B',
+            success: '#10B981',
+            textPrimary: '#1F2937',
+            textSecondary: '#6B7280',
+            bgLight: '#FAF5FF',
+            white: '#FFFFFF'
+        },
+        health: {
+            primary: '#059669',
+            secondary: '#06B6D4',
+            accent: '#3B82F6',
+            success: '#10B981',
+            textPrimary: '#064E3B',
+            textSecondary: '#047857',
+            bgLight: '#ECFDF5',
+            white: '#FFFFFF'
+        },
+        tech: {
+            primary: '#1E293B',
+            secondary: '#8B5CF6',
+            accent: '#22D3EE',
+            success: '#10B981',
+            textPrimary: '#0F172A',
+            textSecondary: '#475569',
+            bgLight: '#F1F5F9',
+            white: '#FFFFFF'
+        },
+        elegant: {
+            primary: '#18181B',
+            secondary: '#A78BFA',
+            accent: '#F97316',
+            success: '#84CC16',
+            textPrimary: '#09090B',
+            textSecondary: '#52525B',
+            bgLight: '#FAFAFA',
+            white: '#FFFFFF'
+        }
+    };
+    
+    // Apply color scheme
+    const colors = SITE_CONFIG.colorScheme === 'custom' 
+        ? SITE_CONFIG.customColors 
+        : COLOR_SCHEMES[SITE_CONFIG.colorScheme] || COLOR_SCHEMES.corporate;
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -30,6 +260,14 @@
             overflow-x: hidden;
         }
 
+        /* Utility Classes */
+        .hidden { display: none !important; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -45,6 +283,11 @@
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
         }
 
         .fade-in-up {
@@ -64,12 +307,10 @@
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1rem 0;
         }
 
         .logo {
@@ -140,9 +381,9 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--text-primary) 100%);
             color: white;
-            padding: 140px 2rem 100px;
+            padding: 140px 0 100px;
             position: relative;
             overflow: hidden;
         }
@@ -154,13 +395,11 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             animation: float 20s infinite;
         }
 
         .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
@@ -253,22 +492,27 @@
             color: #94A3B8;
         }
 
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .hero-visual img {
             width: 100%;
+            max-width: 600px;
             border-radius: 20px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.3);
             animation: float 6s infinite;
         }
 
-        /* Services Section */
-        .services {
-            padding: 100px 2rem;
-            background: white;
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .section:nth-child(even) {
+            background: var(--bg-light);
         }
 
         .section-header {
@@ -299,6 +543,7 @@
             margin: 0 auto;
         }
 
+        /* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -306,12 +551,13 @@
         }
 
         .service-card {
-            background: var(--bg-light);
+            background: white;
             padding: 2.5rem;
             border-radius: 20px;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         .service-card::before {
@@ -369,75 +615,16 @@
             gap: 1rem;
         }
 
-        /* Who We Work With Section */
-        .who-we-work-with {
-            padding: 100px 2rem;
-            background: var(--bg-light);
-        }
-
-        .who-we-work-with-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .who-we-work-with-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .who-we-work-with-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .who-we-work-with-card h3 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .who-we-work-with-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .badge {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
         /* About Section */
-        .about {
-            padding: 100px 2rem;
-            background: white;
-        }
-
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .about-text h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: var(--primary);
             font-weight: 800;
@@ -450,26 +637,23 @@
             line-height: 1.8;
         }
 
-        .about-stats {
+        .about-features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .about-stat {
-            text-align: center;
+        .about-feature {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
         }
 
-        .about-stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        .about-stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .about-feature-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--success);
+            flex-shrink: 0;
         }
 
         .about-image img {
@@ -478,18 +662,131 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 100px 2rem;
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.2;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-rating {
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
             background: var(--bg-light);
         }
 
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 300px;
+        }
+
+        /* Contact Section */
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .contact-info {
@@ -581,16 +878,63 @@
             box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
         }
 
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--text-primary) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+
         /* Footer */
         footer {
             background: var(--primary);
             color: white;
-            padding: 4rem 2rem 2rem;
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
@@ -651,7 +995,7 @@
             color: #94A3B8;
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -683,27 +1027,56 @@
                 grid-template-columns: 1fr;
             }
 
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
             .section-title {
                 font-size: 2rem;
             }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
         }
+
+        /* Icons */
+        .icon-check::before { content: "✓"; }
+        .icon-chart::before { content: "📊"; }
+        .icon-users::before { content: "👥"; }
+        .icon-settings::before { content: "⚙️"; }
+        .icon-star::before { content: "⭐"; }
+        .icon-heart::before { content: "❤️"; }
     </style>
 </head>
 <body>
+    <!-- Dynamic Content Generation -->
+    <script>
+        // Apply colors
+        document.documentElement.style.setProperty('--primary', colors.primary);
+        document.documentElement.style.setProperty('--secondary', colors.secondary);
+        document.documentElement.style.setProperty('--accent', colors.accent);
+        document.documentElement.style.setProperty('--success', colors.success);
+        document.documentElement.style.setProperty('--text-primary', colors.textPrimary);
+        document.documentElement.style.setProperty('--text-secondary', colors.textSecondary);
+        document.documentElement.style.setProperty('--bg-light', colors.bgLight);
+        
+        // Set meta tags
+        document.title = `${SITE_CONFIG.businessName} - ${SITE_CONFIG.tagline}`;
+        document.querySelector('meta[name="description"]').content = SITE_CONFIG.description;
+    </script>
+
     <!-- Header -->
     <header>
-        <nav>
-            <div class="logo">[BUSINESS_NAME]</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#who-we-work-with">Who We Work With</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <nav class="container">
+            <div class="logo" id="logo"></div>
+            <ul class="nav-links" id="navLinks">
+                <!-- Dynamic navigation will be inserted here -->
             </ul>
             <div class="mobile-menu">
                 <span></span>
@@ -714,198 +1087,416 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content fade-in-up">
+    <section id="hero" class="hero">
+        <div class="container hero-content fade-in-up">
             <div class="hero-text">
-                <h1>[HERO_HEADLINE]<br><span>[HERO_SUBHEADLINE]</span></h1>
-                <p>[HERO_DESCRIPTION]</p>
+                <h1 id="heroHeadline"></h1>
+                <p id="heroDescription"></p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="cta-primary">[PRIMARY_CTA_TEXT]</a>
-                    <a href="#services" class="cta-secondary">[SECONDARY_CTA_TEXT]</a>
+                    <a href="#contact" class="cta-primary" id="heroPrimaryCTA"></a>
+                    <a href="#services" class="cta-secondary" id="heroSecondaryCTA"></a>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">[EXPERIENCE_YEARS]+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">[SUCCESS_METRIC_1]</div>
-                        <div class="stat-label">[SUCCESS_METRIC_1_LABEL]</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">[SUCCESS_METRIC_2]</div>
-                        <div class="stat-label">[SUCCESS_METRIC_2_LABEL]</div>
-                    </div>
-                </div>
+                <div class="hero-stats" id="heroStats"></div>
             </div>
             <div class="hero-visual">
-                <img src="[HERO_IMAGE_URL]" alt="[BUSINESS_NAME] Dashboard">
+                <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800" alt="Hero Image">
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="section">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">What We Do</div>
+                <div class="section-label">What We Offer</div>
                 <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">[SERVICES_SUBTITLE]</p>
+                <p class="section-subtitle">Comprehensive solutions tailored to your needs</p>
             </div>
-            <div class="services-grid">
-                <!-- Repeat this service card for each service -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="[SVG_PATH_DATA]"/>
-                        </svg>
-                    </div>
-                    <h3>[SERVICE_NAME]</h3>
-                    <p>[SERVICE_DESCRIPTION]</p>
-                    <a href="#contact" class="service-link">[SERVICE_CTA] →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Who We Work With Section -->
-    <section id="who-we-work-with" class="who-we-work-with">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Our Approach</div>
-                <h2 class="section-title">Who We Work With</h2>
-                <p class="section-subtitle">[WHO_WE_WORK_WITH_SUBTITLE]</p>
-            </div>
-            <div class="who-we-work-with-grid">
-                <!-- Repeat this card for each "who we work with" segment -->
-                <div class="who-we-work-with-card">
-                    <h3>[CARD_TITLE]</h3>
-                    <p>[CARD_DESCRIPTION]</p>
-                    <div class="badge">[CARD_BADGE]</div>
-                </div>
-            </div>
+            <div class="services-grid" id="servicesGrid"></div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>[ABOUT_HEADLINE]</h2>
-                <p>[ABOUT_DESCRIPTION]</p>
-                <div class="about-stats">
-                    <div class="about-stat">
-                        <div class="about-stat-number">[EXPERIENCE_YEARS]+</div>
-                        <div class="about-stat-label">Years Experience</div>
-                    </div>
-                    <div class="about-stat">
-                        <div class="about-stat-number">[SUCCESS_METRIC_1]</div>
-                        <div class="about-stat-label">[SUCCESS_METRIC_1_LABEL]</div>
-                    </div>
-                    <div class="about-stat">
-                        <div class="about-stat-number">[SUCCESS_METRIC_2]</div>
-                        <div class="about-stat-label">[SUCCESS_METRIC_2_LABEL]</div>
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 id="aboutHeadline"></h2>
+                    <p id="aboutDescription"></p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                            </svg>
+                            <div>
+                                <strong>Mission:</strong>
+                                <p id="aboutMission"></p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                            <div>
+                                <strong>Vision:</strong>
+                                <p id="aboutVision"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="about-image">
-                <img src="[ABOUT_IMAGE_URL]" alt="[BUSINESS_NAME] Team">
+                <div class="about-image">
+                    <img id="aboutImage" src="" alt="About Us">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-content">
-            <div class="contact-info">
-                <h3>[CONTACT_HEADLINE]</h3>
-                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;"><strong>[CONTACT_SUBTITLE]</strong></p>
-                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">[CONTACT_DESCRIPTION]</p>
-                
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
-                        <div>[CONTACT_EMAIL]</div>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                        </svg>
-                        <div>[BUSINESS_LOCATION]</div>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                        </svg>
-                        <div>[CONTACT_AVAILABILITY]</div>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="[LINKEDIN_URL]" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </div>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">What People Say</div>
+                <h2 class="section-title">Client Testimonials</h2>
+                <p class="section-subtitle">Real feedback from real clients</p>
             </div>
-            <div class="contact-form">
-                <!-- Contact form will be inserted here -->
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
+            <div class="testimonials-grid" id="testimonialsGrid"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Got Questions?</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Find answers to common questions</p>
+            </div>
+            <div class="faq-container" id="faqContainer"></div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="newsletter">
+        <div class="container">
+            <h3>Stay Updated</h3>
+            <p>Subscribe to our newsletter for tips, insights, and updates</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Get In Touch</div>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">We're here to help and answer any questions</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Ready to take the next step? We're here to help you achieve your goals.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            <div id="contactEmail"></div>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            <div id="contactPhone"></div>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <div id="contactAddress"></div>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                            <div id="contactHours"></div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">How can we help you?</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your challenges..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">[FORM_SUBMIT_TEXT]</button>
-                </form>
+
+                    <div class="social-links" id="socialLinks"></div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>[BUSINESS_NAME]</h4>
-                <p style="color: #CBD5E1; line-height: 1.8;">[FOOTER_DESCRIPTION]</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 id="footerBusinessName"></h4>
+                    <p id="footerDescription"></p>
+                    <div class="social-links" id="footerSocialLinks"></div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul id="footerQuickLinks"></ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li id="footerEmail"></li>
+                        <li id="footerPhone"></li>
+                        <li id="footerAddress"></li>
+                    </ul>
+                </div>
+                <div class="footer-section" id="footerLegal">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#who-we-work-with">Who We Work With</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p id="footerCopyright"></p>
             </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 [BUSINESS_NAME]. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Initialize the website with configuration
+        function initializeWebsite() {
+            // Set logo
+            document.getElementById('logo').textContent = SITE_CONFIG.businessName;
+            
+            // Build navigation
+            const navLinks = document.getElementById('navLinks');
+            const footerQuickLinks = document.getElementById('footerQuickLinks');
+            
+            // Add dynamic navigation items
+            const navItems = [];
+            if (SITE_CONFIG.features.hero) navItems.push({ href: '#hero', text: 'Home' });
+            if (SITE_CONFIG.features.services) navItems.push({ href: '#services', text: 'Services' });
+            if (SITE_CONFIG.features.about) navItems.push({ href: '#about', text: 'About' });
+            if (SITE_CONFIG.features.testimonials) navItems.push({ href: '#testimonials', text: 'Testimonials' });
+            if (SITE_CONFIG.features.faq) navItems.push({ href: '#faq', text: 'FAQ' });
+            navItems.push({ href: '#contact', text: 'Contact', class: 'nav-cta' });
+            
+            navItems.forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = item.href;
+                a.textContent = item.text;
+                if (item.class) a.className = item.class;
+                li.appendChild(a);
+                navLinks.appendChild(li);
+                
+                // Add to footer (except CTA)
+                if (!item.class) {
+                    const footerLi = document.createElement('li');
+                    const footerA = document.createElement('a');
+                    footerA.href = item.href;
+                    footerA.textContent = item.text;
+                    footerLi.appendChild(footerA);
+                    footerQuickLinks.appendChild(footerLi);
+                }
+            });
+            
+            // Hide sections based on features
+            if (!SITE_CONFIG.features.hero) document.getElementById('hero').style.display = 'none';
+            if (!SITE_CONFIG.features.services) document.getElementById('services').style.display = 'none';
+            if (!SITE_CONFIG.features.about) document.getElementById('about').style.display = 'none';
+            if (!SITE_CONFIG.features.testimonials) document.getElementById('testimonials').style.display = 'none';
+            if (!SITE_CONFIG.features.faq) document.getElementById('faq').style.display = 'none';
+            if (!SITE_CONFIG.features.newsletter) document.getElementById('newsletter').style.display = 'none';
+            
+            // Initialize hero section
+            if (SITE_CONFIG.features.hero) {
+                document.getElementById('heroHeadline').innerHTML = 
+                    `${SITE_CONFIG.hero.headline}<br><span>${SITE_CONFIG.hero.subheadline}</span>`;
+                document.getElementById('heroDescription').textContent = SITE_CONFIG.hero.description;
+                document.getElementById('heroPrimaryCTA').textContent = SITE_CONFIG.hero.primaryCTA;
+                document.getElementById('heroSecondaryCTA').textContent = SITE_CONFIG.hero.secondaryCTA;
+                
+                // Add stats
+                const statsContainer = document.getElementById('heroStats');
+                SITE_CONFIG.hero.stats.forEach(stat => {
+                    const statDiv = document.createElement('div');
+                    statDiv.className = 'stat-item';
+                    statDiv.innerHTML = `
+                        <div class="stat-number">${stat.number}</div>
+                        <div class="stat-label">${stat.label}</div>
+                    `;
+                    statsContainer.appendChild(statDiv);
+                });
+            }
+            
+            // Initialize services
+            if (SITE_CONFIG.features.services) {
+                const servicesGrid = document.getElementById('servicesGrid');
+                SITE_CONFIG.services.forEach(service => {
+                    const serviceCard = document.createElement('div');
+                    serviceCard.className = 'service-card';
+                    serviceCard.innerHTML = `
+                        <div class="service-icon icon-${service.icon}"></div>
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <a href="#contact" class="service-link">${service.cta} →</a>
+                    `;
+                    servicesGrid.appendChild(serviceCard);
+                });
+            }
+            
+            // Initialize about section
+            if (SITE_CONFIG.features.about) {
+                document.getElementById('aboutHeadline').textContent = SITE_CONFIG.about.headline;
+                document.getElementById('aboutDescription').textContent = SITE_CONFIG.about.description;
+                document.getElementById('aboutMission').textContent = SITE_CONFIG.about.mission;
+                document.getElementById('aboutVision').textContent = SITE_CONFIG.about.vision;
+                document.getElementById('aboutImage').src = SITE_CONFIG.about.image;
+            }
+            
+            // Initialize testimonials
+            if (SITE_CONFIG.features.testimonials) {
+                const testimonialsGrid = document.getElementById('testimonialsGrid');
+                SITE_CONFIG.testimonials.forEach(testimonial => {
+                    const testimonialCard = document.createElement('div');
+                    testimonialCard.className = 'testimonial-card';
+                    testimonialCard.innerHTML = `
+                        <div class="testimonial-quote">"</div>
+                        <p class="testimonial-content">${testimonial.content}</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">${testimonial.name.charAt(0)}</div>
+                            <div class="testimonial-info">
+                                <h4>${testimonial.name}</h4>
+                                <p>${testimonial.role}</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">${'⭐'.repeat(testimonial.rating)}</div>
+                    `;
+                    testimonialsGrid.appendChild(testimonialCard);
+                });
+            }
+            
+            // Initialize FAQ
+            if (SITE_CONFIG.features.faq) {
+                const faqContainer = document.getElementById('faqContainer');
+                SITE_CONFIG.faq.forEach((faq, index) => {
+                    const faqItem = document.createElement('div');
+                    faqItem.className = 'faq-item';
+                    faqItem.innerHTML = `
+                        <div class="faq-question" onclick="toggleFAQ(${index})">
+                            ${faq.question}
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">${faq.answer}</div>
+                    `;
+                    faqContainer.appendChild(faqItem);
+                });
+            }
+            
+            // Initialize contact info
+            document.getElementById('contactEmail').textContent = SITE_CONFIG.email;
+            document.getElementById('contactPhone').textContent = SITE_CONFIG.phone;
+            document.getElementById('contactAddress').textContent = SITE_CONFIG.address;
+            document.getElementById('contactHours').textContent = SITE_CONFIG.hours;
+            
+            // Initialize social links
+            const socialLinksContainer = document.getElementById('socialLinks');
+            const footerSocialLinks = document.getElementById('footerSocialLinks');
+            
+            if (SITE_CONFIG.features.socialMedia) {
+                Object.entries(SITE_CONFIG.socialMedia).forEach(([platform, url]) => {
+                    if (url) {
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        link.innerHTML = getSocialIcon(platform);
+                        socialLinksContainer.appendChild(link);
+                        footerSocialLinks.appendChild(link.cloneNode(true));
+                    }
+                });
+            }
+            
+            // Initialize footer
+            document.getElementById('footerBusinessName').textContent = SITE_CONFIG.businessName;
+            document.getElementById('footerDescription').textContent = SITE_CONFIG.footer.description;
+            document.getElementById('footerEmail').textContent = SITE_CONFIG.email;
+            document.getElementById('footerPhone').textContent = SITE_CONFIG.phone;
+            document.getElementById('footerAddress').textContent = SITE_CONFIG.address;
+            document.getElementById('footerCopyright').textContent = 
+                `© ${SITE_CONFIG.footer.copyrightYear} ${SITE_CONFIG.businessName}. All rights reserved.`;
+            
+            // Hide legal section if not needed
+            if (!SITE_CONFIG.footer.privacyPolicy && !SITE_CONFIG.footer.termsOfService) {
+                document.getElementById('footerLegal').style.display = 'none';
+            }
+        }
+        
+        // Social media icons
+        function getSocialIcon(platform) {
+            const icons = {
+                facebook: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
+                twitter: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>',
+                linkedin: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>',
+                instagram: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/></svg>',
+                youtube: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>'
+            };
+            return icons[platform] || '';
+        }
+        
+        // Toggle FAQ
+        function toggleFAQ(index) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems[index].classList.toggle('active');
+        }
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For now, we'll just show the success message
+            alert(SITE_CONFIG.formSettings.successMessage);
+            this.reset();
+        });
+        
+        // Newsletter form
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing!');
+            this.reset();
+        });
+        
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -919,7 +1510,12 @@
                 }
             });
         });
-
+        
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
@@ -929,20 +1525,13 @@
                 header.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
             }
         });
-
-        // Form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for contacting us! We will get back to you soon.');
-            this.reset();
-        });
-
+        
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-
+        
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -951,14 +1540,19 @@
                 }
             });
         }, observerOptions);
-
-        // Observe all animated elements
-        document.querySelectorAll('.service-card, .who-we-work-with-card, .about-content').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
-        });
+        
+        // Initialize website
+        initializeWebsite();
+        
+        // Observe elements for animation
+        setTimeout(() => {
+            document.querySelectorAll('.service-card, .testimonial-card, .faq-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        }, 100);
     </script>
 </body>
 </html>
